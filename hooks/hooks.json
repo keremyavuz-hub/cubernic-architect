@@ -1,0 +1,14 @@
+{
+  "hooks": {
+    "SessionStart": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "echo 'Cubernic Architect active: load the cubernic-architect:architect skill before your first reply and apply the guide rules.'"
+          }
+        ]
+      }
+    ]
+  }
+}

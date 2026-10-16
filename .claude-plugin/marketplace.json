@@ -1,0 +1,12 @@
+{
+  "name": "cubernic",
+  "owner": { "name": "Kerem Yavuz" },
+  "plugins": [
+    {
+      "name": "cubernic-architect",
+      "source": "./",
+      "description": "Project-independent architecture guide for AI-assisted development (TR / EN)",
+      "version": "0.2.0"
+    }
+  ]
+}

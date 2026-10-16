@@ -1,0 +1,157 @@
+# Cubernic Architect
+## Projede böyle bir yapı kullanılacaksa dikkate alınmalıdır.
+Olması gereken ve sürdürülebilir mimari için klavuz niteliği taşımaktadır. Burada yazılanlar maksimum düzeyde, projeye uygunluğu ve ihtiyaçları dikkate alınarak, projenin amacına uygunsa kullanılmalı, dikkate alınmalı ve gerektiğinde önerilmeli. Gözden kaçırılmamalıdır. Bir yapay zeka bu maddeleri okuduğunda burada yazılı maddeleri her zaman gözden geçirmelidir. Projeyi geliştiren kişinin izni dahilinde bazı maddeler es geçilebilir ancak bunun kararını geliştirici vermelidir.
+
+## Yapılacaklar
+- Kılavuz, geliştirici ilgili yapıyı (giriş, kayıt, panel, e-posta vb.) yapmaya başladığında devreye girer; projede olmayan yapılar kendiliğinden kurulmaz ve dayatılmaz (bkz. [ai/guide-activation.md](ai/guide-activation.md)).
+- Kılavuzun sürümü, güncellenmesi, projeye yerleştirilmesi ve yazım kuralları için [guide-maintenance.md](guide-maintenance.md) okunmalıdır; sürüm .claude-plugin/plugin.json, değişiklikler depo kökündeki CHANGELOG.md dosyasındadır.
+- Yeni bir projeye başlanırken önce [project-start.md](project-start.md) dosyasındaki sorular geliştiriciye sorulmalıdır.
+- Yapay zeka ai/ klasöründeki tüm dosyaları her projede ve her işte uygulamalıdır; bu dosyalar proje türünden bağımsızdır.
+- Yapay zeka ai/destructive-actions.md dosyasındaki kesin yasaklara her zaman uymalıdır; geliştiricinin açık onayı olmadan hiçbir veri, tablo, veritabanı, dosya veya kaynak silinmemelidir.
+- Yeni bir projeye başlarken önce legal/project-assessment.md dosyasındaki sorular geliştiriciye sorulmalı, cevaplar projenin sistem belgesine yazılmalıdır.
+- Projeye yeni bir özellik eklenirken aynı dosyadaki "Özellik Eklendiğinde Doğan Yükümlülükler" bölümü kontrol edilmeli, gerekiyorsa geliştirici özellik yazılmadan önce uyarılmalıdır.
+- Bir konuya başlamadan önce aşağıdaki listeden ilgili klasör ve dosyalar okunmalıdır.
+- Her dosya aynı formatta yazılmalıdır: başlık, bu giriş paragrafı, "Yapılacaklar" bölümü ve "…malıdır." şeklinde biten maddeler.
+- Seçimlik maddelerin sonuna (Opsiyonel) veya (Önerilen) yazılmalıdır.
+- Her projede yaşanan yeni sorun, açık ve ders ilgili dosyaya madde olarak eklenmelidir.
+- Uygun dosya yoksa ilgili klasörde yeni dosya, uygun klasör yoksa yeni klasör açılmalı ve bu listeye eklenmelidir.
+- Bir dosya çok büyürse kendi içinde alt dosyalara bölünmelidir.
+- Maddeler bir projenin kendi kararlarına göre değil, genel olarak yazılmalıdır; bir projeye özgü karar genel kural gibi yazılmamalıdır.
+- Uygulama türüne göre değişen maddeler ayrı bölümlerde yazılmalıdır: "## Ortak Yapılacaklar" ve "## X İse" bölümleri (ör. Bireysel Kullanıcı Kaydı İse, Firma / Müşteri Bazlı Panel İse, Yalnız Davetli Sistem İse).
+- Yalnızca belirli bir uygulama türünde geçerli olan dosyaların başında "## Hangi Durumda Kullanılır" bölümü bulunmalıdır.
+- Dosyayı okuyan yapay zeka önce projenin türünü belirlemeli, yalnızca ortak ve ilgili türün maddelerini uygulamalıdır.
+- Hazır servis veya platform önerilebilecek konularda dosyada "## Önerilen Platformlar" bölümü bulunmalı; ücret, ölçek ve veri konumu bilgisi geliştiriciye belirtilmelidir.
+- Platform dosyaları (platforms/) platformun her özelliği için ayrı bölüm içermeli; geliştirici o özelliği kullanacaksa ilgili bölümdeki yapılacaklar uygulanmalıdır.
+- legal/ klasöründeki dosyalara göre oluşturulan tüm metinler taslaktır, yasal alt yapı sağlamaz; yapay zeka bu durumu geliştiriciye her seferinde açıkça bildirmelidir.
+
+## Dosyalar
+- code/
+  - [architecture.md](code/architecture.md) — Merkezilik, kod tekrarı yasağı, katmanlar, SOLID, olay tabanlı yapı, genişletilebilirlik
+  - [naming.md](code/naming.md) — Dosya, klasör, değişken, fonksiyon, veritabanı ve olay adlandırma standartları
+  - [i18n.md](code/i18n.md) — Dil dosyaları, çok dillilik, Intl ile biçimlendirme
+  - [dependencies.md](code/dependencies.md) — Önce yerleşik çözüm, kütüphane seçim ölçütleri, alternatifler, bakım
+  - [registry.md](code/registry.md) — Kütüphane, dış servis ve mimari karar kayıtları (docs/KUTUPHANELER.md, docs/KARARLAR.md)
+  - [error-handling.md](code/error-handling.md) — Merkezi hata yönetimi, beklenen / beklenmeyen hatalar, hata kodları, arayüz hata sınırları
+  - [external-requests.md](code/external-requests.md) — Harici istekler ve crawl: zaman aşımı, backoff, hız sınırı, robots.txt, karşı sunucuyu yormama
+  - [idempotency.md](code/idempotency.md) — Çift tıklama, çift kayıt, iyimser kilit, tekrar gelen webhook, yarış durumları
+  - [api-design.md](code/api-design.md) — Sürümleme, sayfalama, hata formatı, API anahtarları, webhook imzası
+  - [caching.md](code/caching.md) — Ne, nerede, ne kadar süre; geçersiz kılma, kişisel veri sızıntısı
+  - [datetime-locale.md](code/datetime-locale.md) — UTC saklama, saat dilimi, para birimi, Türkçe sıralama ve İ/ı dönüşümü
+  - [ai-features.md](code/ai-features.md) — LLM kullanımı: prompt injection, maliyet / kota, kişisel veri, çıktı doğrulama
+- ai/
+  - [workflow.md](ai/workflow.md) — Yapay zeka ile çalışma düzeni
+  - [dev-environment.md](ai/dev-environment.md) — Yapay zeka geliştirme ortamı kurulumu: Context Mode, skill'ler, MCP sunucuları, kural dosyası, izin ayarları, hook'lar
+  - [project-awareness.md](ai/project-awareness.md) — Projeyi bütünüyle bilme, işe başlamadan tarama, etki analizi, şüpheyi bildirme, en iyi öneri
+  - [critical-thinking.md](ai/critical-thinking.md) — Sorgusuz onaylamama, ne zaman itiraz edilir / edilmez, tutarlılık ve dürüstlük
+  - [performance.md](ai/performance.md) — Performansı kendiliğinden düşünme ve önerme (veritabanı, sunucu, ön yüz, altyapı)
+  - [resource-usage.md](ai/resource-usage.md) — Geliştirmeden önce CPU, RAM, GPU, veritabanı, disk, ağ ve dış servis tüketimi kontrolü ve önlemleri
+  - [security-review.md](ai/security-review.md) — Her işten sonra güvenlik gözden geçirmesi; enjeksiyon, dosya yükleme, sızıntı, tedarik zinciri, prompt injection
+  - [security-audit.md](ai/security-audit.md) — Uyulacak güvenlik standartları (OWASP, ASVS, CWE), Cloudflare security-audit skill ile düzenli denetim, sonuçların işlenmesi
+  - [testing-verification.md](ai/testing-verification.md) — Bitti demeden önce doğrulama, hata yolları, dürüst test raporu
+  - [code-quality.md](ai/code-quality.md) — Okunabilirlik, tekrar etmeme, hata yönetimi, bağımlılık, değişiklik boyutu
+  - [git-commits.md](ai/git-commits.md) — Commit düzeni, push yok, geçmişi koruma, belgelerle birlikte commit
+  - [communication.md](ai/communication.md) — Geliştiriciyle iletişim, dürüstlük, soru sorma, özet
+  - [guide-activation.md](ai/guide-activation.md) — Kılavuzun ne zaman devreye girdiği: tetikleyiciler, mevcut kod, geliştiriciyi boğmama
+  - [access-scope.md](ai/access-scope.md) — Proje dizini dışına izinsiz çıkmama, izin sonrası kendi başına araştırmama, gereksiz dosya okumama
+  - [permissions.md](ai/permissions.md) — Gereksiz / abartılı izin istememe, en dar kapsam, güvenlik riski taşıyan durumlar
+  - [secret-handling.md](ai/secret-handling.md) — .env ve gizli değerleri asla gösterme / sızdırma; yalnız dolu-boş kontrolü, okuma yasağı izinleri
+  - [destructive-actions.md](ai/destructive-actions.md) — Silme ve geri dönüşü olmayan işlem yasakları, onaylı silme, test verisi, migration
+- auth/
+  - [login.md](auth/login.md) — Giriş ekranı
+  - [session.md](auth/session.md) — Oturum yönetimi
+  - [register.md](auth/register.md) — Kayıt ve başvuru
+  - [email-verification.md](auth/email-verification.md) — E-posta doğrulama
+  - [approval-invite.md](auth/approval-invite.md) — Başvuru onayı ve davet
+  - [password-reset.md](auth/password-reset.md) — Parola sıfırlama ve değiştirme
+  - [account-closure.md](auth/account-closure.md) — Hesap kapatma, üyelikten ayrılma, veri dışa aktarma
+  - [roles-permissions.md](auth/roles-permissions.md) — Rol / izin matrisi, merkezi yetki kontrolü, kullanıcı gözünden görme
+  - [two-factor.md](auth/two-factor.md) — TOTP, yedek kodlar, passkey, yöneticiler için zorunluluk
+- legal/
+  - [project-assessment.md](legal/project-assessment.md) — Proje türü (hobi / ticari), sorulacaklar, özelliğe göre doğan yükümlülükler, sözleşme riskleri, metin-sistem uyumu, lisanslar, yapay zeka
+  - [legal-pages.md](legal/legal-pages.md) — Oluşturulacak hukuki sayfalar ve her sayfada olması gereken konular
+  - [terms.md](legal/terms.md) — Kullanım ve kayıt sözleşmesi, sürümleme, kabul kaydı
+  - [privacy-kvkk.md](legal/privacy-kvkk.md) — KVKK aydınlatma, kişisel veri hakları, ihlal bildirimi
+  - [consents.md](legal/consents.md) — İzinler, onaylar ve izin ekranları (izinlerim sayfası, İYS, yayın onayı, önerilen platformlar)
+  - [consent-records.md](legal/consent-records.md) — İzin kayıtlarının sistemde saklanması (tablo yapısı, sürüm, kanıt)
+  - [cookies.md](legal/cookies.md) — Çerezler, çerez bildirimi ve tercih ekranları, Consent Mode, önerilen CMP platformları
+  - [data-retention.md](legal/data-retention.md) — Saklama kararları, önerilen süreler, silme / anonimleştirme, yedekleme politikası
+- forms/
+  - [forms.md](forms/forms.md) — Form genel kuralları
+  - [validations.md](forms/validations.md) — Validasyonlar
+  - [buttons-loading.md](forms/buttons-loading.md) — Butonlar ve yükleme durumları
+  - [alerts.md](forms/alerts.md) — Uyarı ve bildirim mesajları
+- emails/
+  - [sending.md](emails/sending.md) — Gönderim
+  - [templates.md](emails/templates.md) — Şablon yönetimi, tasarım ve ton, HTML e-posta kodlama kuralları, test
+  - [template-catalog.md](emails/template-catalog.md) — Standart e-posta şablonları ve her birinin içeriği
+  - [landing-pages.md](emails/landing-pages.md) — E-posta bağlantılarının açtığı onay sayfaları
+  - [deliverability.md](emails/deliverability.md) — Teslim edilebilirlik (SPF, DKIM, DMARC)
+- security/
+  - [csrf.md](security/csrf.md) — CSRF
+  - [rate-limit.md](security/rate-limit.md) — İstek sınırları, seri gönderim, yarış durumu
+  - [bot-protection.md](security/bot-protection.md) — Bot koruması
+  - [client-ip.md](security/client-ip.md) — İstemci IP adresi
+  - [accounts.md](security/accounts.md) — Hesap ve kimlik güvenliği
+  - [data-isolation.md](security/data-isolation.md) — Yetki ve veri izolasyonu
+  - [ssrf.md](security/ssrf.md) — Dış adreslere istek
+  - [headers.md](security/headers.md) — Güvenlik başlıkları
+  - [secrets.md](security/secrets.md) — Gizli anahtarlar
+- setup/
+  - [environment.md](setup/environment.md) — .env dosyaları, değişkenlerin düzeni, gizli değerler, başlangıç kontrolü, standart değişkenler
+  - [env-catalog.md](setup/env-catalog.md) — Hizmet hizmet standart değişken adları (Supabase, Cloudflare, oturum, e-posta, SMS, yapay zeka, ödeme, pazar yerleri, izleme…)
+- platforms/
+  - [cloudflare.md](platforms/cloudflare.md) — Alan adı ekleme, DNS, SSL, Email Routing, Workers, Pages, R2, Turnstile, WAF, önbellek, Tunnel / Access
+  - [hetzner.md](platforms/hetzner.md)
+  - [resend.md](platforms/resend.md) — Alan adı doğrulama, API anahtarı, gönderim, şablon, webhook, toplu gönderim
+  - [postgres.md](platforms/postgres.md)
+  - [google-tag-manager.md](platforms/google-tag-manager.md) — GTM hesap ve yetki, ortamlar ve yayın, adlandırma, dataLayer, Consent Mode, güvenlik, sunucu tarafı GTM
+- operations/
+  - [logging.md](operations/logging.md) — Yapılandırılmış log, seviyeler, ne loglanır / loglanmaz, saklama
+  - [error-tracking.md](operations/error-tracking.md) — Hata izleme ve gözlemleme kararı, Sentry ve alternatifleri, uptime, uyarılar
+  - [audit-log.md](operations/audit-log.md) — Etkinlik kaydı
+  - [maintenance.md](operations/maintenance.md) — Zamanlanmış bakım
+  - [documentation.md](operations/documentation.md) — Belgeleme
+  - [deployment.md](operations/deployment.md) — Otomatik deploy (CI / CD): ortamlar, akış adımları, gizli değişkenler, geri alma, önerilen platformlar
+  - [go-live.md](operations/go-live.md) — Canlıya çıkış kontrol listesi
+  - [jobs.md](operations/jobs.md) — Kuyruk, tekrar deneme, idempotency, kilit, dead-letter, cron izleme
+  - [queues.md](operations/queues.md) — Kuyruk sistemleri: seçim, iş tasarımı, yeniden deneme, dead-letter, eşzamanlılık, deploy, izleme
+  - [uptime-incidents.md](operations/uptime-incidents.md) — Sağlık uçları, uptime izleme, durum sayfası, olay anı ve sonrası
+  - [cost.md](operations/cost.md) — Servis bazlı maliyet, bütçe uyarıları, ücretsiz katman sınırları
+  - [feature-flags.md](operations/feature-flags.md) — Özelliği kodla değil ayarla açma, kademeli açılış, eski bayrakları temizleme
+  - [handover.md](operations/handover.md) — Kurulum rehberi, erişim listesi, ayrılan kişinin erişimlerinin kaldırılması
+- ui/
+  - [data-tables.md](ui/data-tables.md) — Panel tabloları: sunucu tarafı sayfalama, filtreleme, sıralama, adres çubuğunda durum, toplu işlem, dışa aktarma
+  - [responsive.md](ui/responsive.md) — Mobil öncelikli tasarım, test genişlikleri, yerleşim dönüşümleri, taşma, dokunmatik ve mobil tarayıcı kuralları
+  - [styling.md](ui/styling.md) — Tailwind kullanımı, HTML'de stil yasağı, CSS dosyalarında bileşen sınıfları, e-posta istisnası
+  - [media-optimization.md](ui/media-optimization.md) — Görsel, video, yazı tipi ve ikon optimizasyonu
+  - [layout-buttons.md](ui/layout-buttons.md) — Yerleşim ve butonlar
+  - [theme.md](ui/theme.md) — Renk ve tema
+  - [animation.md](ui/animation.md) — Canvas / WebGL / animasyonda ekranı kilitlememe, duraklatma, uyarlanabilir kalite, test yöntemi
+  - [design-preferences.md](ui/design-preferences.md) — Tasarım tercihleri
+  - [accessibility.md](ui/accessibility.md) — Klavye, kontrast, ekran okuyucu, odak, WCAG 2.2 AA
+  - [seo.md](ui/seo.md) — Meta / Open Graph, canonical, sitemap, yapılandırılmış veri, panelde noindex
+- database/
+  - [schema.md](database/schema.md) — Tablo / kolon isimlendirme, anahtarlar, index, zaman damgaları, kısıtlar, sorgu güvenliği
+  - [migrations.md](database/migrations.md) — Sıralı, geri alınabilir, kesintisiz migration; veri kaybettiren değişiklikler
+  - [backup.md](database/backup.md) — Otomatik, şifreli, sunucu dışı yedek; geri yükleme testi, RPO / RTO
+- files/
+  - [uploads.md](files/uploads.md) — Tür / boyut doğrulama, virüs tarama, imzalı URL, firma bazlı ayrım, EXIF
+- data/
+  - [import-export.md](data/import-export.md) — CSV / Excel / XML / JSON feed; önizleme, satır bazlı hata raporu, kuyruk, formül enjeksiyonu
+- stack/
+  - [framework-rules.md](stack/framework-rules.md) — Hangi framework kullanılıyorsa onun güvenlik, geliştirme, performans kurallarına uyma; algılama ve sürüm
+  - [selection.md](stack/selection.md) — Framework seçimi: sorulacaklar, ölçütler, karar kaydı
+  - [web/nextjs.md](stack/web/nextjs.md) — Next.js (App Router)
+  - [web/laravel.md](stack/web/laravel.md) — Laravel
+  - [web/aspnet-core.md](stack/web/aspnet-core.md) — ASP.NET Core
+  - [web/node.md](stack/web/node.md) — Node.js sunucu (NestJS / Express / Fastify)
+  - [web/django.md](stack/web/django.md) — Django
+  - [languages/typescript.md](stack/languages/typescript.md) — TypeScript / JavaScript
+  - [languages/php.md](stack/languages/php.md) — PHP
+  - [languages/csharp.md](stack/languages/csharp.md) — C#
+  - [languages/python.md](stack/languages/python.md) — Python
+  - [mobile/general.md](stack/mobile/general.md) — Mobil genel: sürüm uyumu, güvenli depolama, sertifika ve imzalama, donma / çökme önleme, mağaza kuralları
+  - [mobile/react-native-expo.md](stack/mobile/react-native-expo.md) — React Native / Expo
+  - [mobile/flutter.md](stack/mobile/flutter.md) — Flutter
+  - [mobile/ios-native.md](stack/mobile/ios-native.md) — iOS native (Swift / SwiftUI)
+  - [mobile/android-native.md](stack/mobile/android-native.md) — Android native (Kotlin / Compose)

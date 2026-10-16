@@ -1,0 +1,157 @@
+# Cubernic Architect
+## Must be considered if such a structure is used in the project.
+This is a guide for a proper and sustainable architecture. What is written here should be used, considered and suggested where needed, to the maximum extent, taking into account the project's suitability and needs, if it fits the project's purpose. It must not be overlooked. Whenever an AI reads these items, it must always review the items written here. Some items may be skipped with the permission of the project developer, but that decision must be made by the developer.
+
+## To Do
+- The guide comes into effect when the developer starts building the related structure (login, registration, panel, email, etc.); structures not present in the project must not be set up automatically or imposed (see [ai/guide-activation.md](ai/guide-activation.md)).
+- [guide-maintenance.md](guide-maintenance.md) must be read for the guide's versioning, updating, placement in the project and writing rules; the version is kept in .claude-plugin/plugin.json and changes in the repository root CHANGELOG.md.
+- When starting a new project, the questions in [project-start.md](project-start.md) must first be asked to the developer.
+- The AI must apply all files in the ai/ folder in every project and every task; these files are independent of the project type.
+- The AI must always obey the strict prohibitions in ai/destructive-actions.md; no data, table, database, file or resource must be deleted without the developer's explicit approval.
+- When starting a new project, the questions in legal/project-assessment.md must first be asked to the developer, and the answers must be written to the project's system document.
+- When adding a new feature to the project, the "Obligations Arising When a Feature Is Added" section in the same file must be checked, and if needed the developer must be warned before the feature is written.
+- Before starting a topic, the related folders and files from the list below must be read.
+- Every file must be written in the same format: title, this intro paragraph, a "To Do" section and items ending with "... must ...".
+- Optional items must end with (Optional) or (Recommended).
+- Every new problem, vulnerability and lesson encountered in a project must be added as an item to the related file.
+- If there is no suitable file, a new file must be created in the related folder; if there is no suitable folder, a new folder must be created and added to this list.
+- If a file grows too large, it must be split into sub-files.
+- Items must be written generally, not according to one project's own decisions; a project-specific decision must not be written as a general rule.
+- Items that vary by application type must be written in separate sections: "## Common To Do" and "## If X" sections (e.g., If Individual User Registration, If Company / Customer Based Panel, If Invite-Only System).
+- Files that apply only to a specific application type must start with a "## When To Use" section.
+- The AI reading the file must first determine the project type and apply only the common items and those of the related type.
+- In topics where a ready-made service or platform can be suggested, the file must contain a "## Recommended Platforms" section; pricing, scale and data location information must be stated to the developer.
+- Platform files (platforms/) must contain a separate section for each feature of the platform; if the developer will use that feature, the to-do items in the related section must be applied.
+- All texts produced based on the files in the legal/ folder are drafts and do not provide a legal basis; the AI must clearly state this to the developer every time.
+
+## Files
+- code/
+  - [architecture.md](code/architecture.md) — Centralization, no code duplication, layers, SOLID, event-driven structure, extensibility
+  - [naming.md](code/naming.md) — Naming standards for files, folders, variables, functions, database and events
+  - [i18n.md](code/i18n.md) — Language files, multilingual support, formatting with Intl
+  - [dependencies.md](code/dependencies.md) — Built-in solution first, library selection criteria, alternatives, maintenance
+  - [registry.md](code/registry.md) — Records of libraries, external services and architectural decisions (docs/KUTUPHANELER.md, docs/KARARLAR.md)
+  - [error-handling.md](code/error-handling.md) — Central error handling, expected / unexpected errors, error codes, UI error boundaries
+  - [external-requests.md](code/external-requests.md) — External requests and crawling: timeouts, backoff, rate limiting, robots.txt, not overloading the remote server
+  - [idempotency.md](code/idempotency.md) — Double clicks, duplicate records, optimistic locking, repeated webhooks, race conditions
+  - [api-design.md](code/api-design.md) — Versioning, pagination, error format, API keys, webhook signatures
+  - [caching.md](code/caching.md) — What, where, how long; invalidation, personal data leakage
+  - [datetime-locale.md](code/datetime-locale.md) — UTC storage, time zones, currency, Turkish sorting and İ/ı conversion
+  - [ai-features.md](code/ai-features.md) — LLM usage: prompt injection, cost / quota, personal data, output validation
+- ai/
+  - [workflow.md](ai/workflow.md) — Working routine with AI
+  - [dev-environment.md](ai/dev-environment.md) — AI development environment setup: Context Mode, skills, MCP servers, rule file, permission settings, hooks
+  - [project-awareness.md](ai/project-awareness.md) — Knowing the project as a whole, scanning before starting, impact analysis, reporting doubts, best suggestion
+  - [critical-thinking.md](ai/critical-thinking.md) — Not approving blindly, when to object / not object, consistency and honesty
+  - [performance.md](ai/performance.md) — Thinking about and suggesting performance proactively (database, server, frontend, infrastructure)
+  - [resource-usage.md](ai/resource-usage.md) — Checking CPU, RAM, GPU, database, disk, network and external service consumption before development, and precautions
+  - [security-review.md](ai/security-review.md) — Security review after every task; injection, file upload, leakage, supply chain, prompt injection
+  - [security-audit.md](ai/security-audit.md) — Security standards to follow (OWASP, ASVS, CWE), regular audits with the Cloudflare security-audit skill, handling results
+  - [testing-verification.md](ai/testing-verification.md) — Verification before saying done, error paths, honest test report
+  - [code-quality.md](ai/code-quality.md) — Readability, no repetition, error handling, dependencies, change size
+  - [git-commits.md](ai/git-commits.md) — Commit routine, no push, preserving history, committing together with documents
+  - [communication.md](ai/communication.md) — Communication with the developer, honesty, asking questions, summary
+  - [guide-activation.md](ai/guide-activation.md) — When the guide comes into effect: triggers, existing code, not overwhelming the developer
+  - [access-scope.md](ai/access-scope.md) — Not leaving the project directory without permission, not researching on its own after permission, not reading unnecessary files
+  - [permissions.md](ai/permissions.md) — Not asking for unnecessary / excessive permissions, narrowest scope, situations carrying security risk
+  - [secret-handling.md](ai/secret-handling.md) — Never show / leak .env and secret values; only filled-empty checks, read-deny permissions
+  - [destructive-actions.md](ai/destructive-actions.md) — Prohibitions on deletion and irreversible operations, approved deletion, test data, migrations
+- auth/
+  - [login.md](auth/login.md) — Login screen
+  - [session.md](auth/session.md) — Session management
+  - [register.md](auth/register.md) — Registration and application
+  - [email-verification.md](auth/email-verification.md) — Email verification
+  - [approval-invite.md](auth/approval-invite.md) — Application approval and invitation
+  - [password-reset.md](auth/password-reset.md) — Password reset and change
+  - [account-closure.md](auth/account-closure.md) — Account closure, leaving membership, data export
+  - [roles-permissions.md](auth/roles-permissions.md) — Role / permission matrix, central authorization check, viewing as a user
+  - [two-factor.md](auth/two-factor.md) — TOTP, backup codes, passkey, mandatory for administrators
+- legal/
+  - [project-assessment.md](legal/project-assessment.md) — Project type (hobby / commercial), questions to ask, obligations arising by feature, contract risks, text-system consistency, licenses, AI
+  - [legal-pages.md](legal/legal-pages.md) — Legal pages to create and the topics each page must contain
+  - [terms.md](legal/terms.md) — Terms of use and registration agreement, versioning, acceptance record
+  - [privacy-kvkk.md](legal/privacy-kvkk.md) — KVKK (Turkish data protection law) notice, personal data rights, breach notification
+  - [consents.md](legal/consents.md) — Permissions, consents and consent screens (my permissions page, İYS, publication consent, recommended platforms)
+  - [consent-records.md](legal/consent-records.md) — Storing consent records in the system (table structure, version, evidence)
+  - [cookies.md](legal/cookies.md) — Cookies, cookie notice and preference screens, Consent Mode, recommended CMP platforms
+  - [data-retention.md](legal/data-retention.md) — Retention decisions, recommended periods, deletion / anonymization, backup policy
+- forms/
+  - [forms.md](forms/forms.md) — General form rules
+  - [validations.md](forms/validations.md) — Validations
+  - [buttons-loading.md](forms/buttons-loading.md) — Buttons and loading states
+  - [alerts.md](forms/alerts.md) — Alert and notification messages
+- emails/
+  - [sending.md](emails/sending.md) — Sending
+  - [templates.md](emails/templates.md) — Template management, design and tone, HTML email coding rules, testing
+  - [template-catalog.md](emails/template-catalog.md) — Standard email templates and the content of each
+  - [landing-pages.md](emails/landing-pages.md) — Confirmation pages opened by email links
+  - [deliverability.md](emails/deliverability.md) — Deliverability (SPF, DKIM, DMARC)
+- security/
+  - [csrf.md](security/csrf.md) — CSRF
+  - [rate-limit.md](security/rate-limit.md) — Request limits, rapid-fire submissions, race conditions
+  - [bot-protection.md](security/bot-protection.md) — Bot protection
+  - [client-ip.md](security/client-ip.md) — Client IP address
+  - [accounts.md](security/accounts.md) — Account and identity security
+  - [data-isolation.md](security/data-isolation.md) — Authorization and data isolation
+  - [ssrf.md](security/ssrf.md) — Requests to external addresses
+  - [headers.md](security/headers.md) — Security headers
+  - [secrets.md](security/secrets.md) — Secret keys
+- setup/
+  - [environment.md](setup/environment.md) — .env files, variable layout, secret values, startup check, standard variables
+  - [env-catalog.md](setup/env-catalog.md) — Standard variable names per service (Supabase, Cloudflare, session, email, SMS, AI, payment, marketplaces, monitoring…)
+- platforms/
+  - [cloudflare.md](platforms/cloudflare.md) — Adding a domain, DNS, SSL, Email Routing, Workers, Pages, R2, Turnstile, WAF, cache, Tunnel / Access
+  - [hetzner.md](platforms/hetzner.md)
+  - [resend.md](platforms/resend.md) — Domain verification, API key, sending, templates, webhooks, bulk sending
+  - [postgres.md](platforms/postgres.md)
+  - [google-tag-manager.md](platforms/google-tag-manager.md) — GTM account and permissions, environments and publishing, naming, dataLayer, Consent Mode, security, server-side GTM
+- operations/
+  - [logging.md](operations/logging.md) — Structured logs, levels, what is / is not logged, retention
+  - [error-tracking.md](operations/error-tracking.md) — Error tracking and observability decision, Sentry and alternatives, uptime, alerts
+  - [audit-log.md](operations/audit-log.md) — Activity log
+  - [maintenance.md](operations/maintenance.md) — Scheduled maintenance
+  - [documentation.md](operations/documentation.md) — Documentation
+  - [deployment.md](operations/deployment.md) — Automatic deploy (CI / CD): environments, pipeline steps, secret variables, rollback, recommended platforms
+  - [go-live.md](operations/go-live.md) — Go-live checklist
+  - [jobs.md](operations/jobs.md) — Queue, retries, idempotency, locks, dead-letter, cron monitoring
+  - [queues.md](operations/queues.md) — Queue systems: selection, job design, retries, dead-letter, concurrency, deploy, monitoring
+  - [uptime-incidents.md](operations/uptime-incidents.md) — Health endpoints, uptime monitoring, status page, during and after incidents
+  - [cost.md](operations/cost.md) — Per-service cost, budget alerts, free tier limits
+  - [feature-flags.md](operations/feature-flags.md) — Enabling features via settings instead of code, gradual rollout, cleaning up old flags
+  - [handover.md](operations/handover.md) — Setup guide, access list, removing access of people who leave
+- ui/
+  - [data-tables.md](ui/data-tables.md) — Panel tables: server-side pagination, filtering, sorting, state in the address bar, bulk actions, export
+  - [responsive.md](ui/responsive.md) — Mobile-first design, test widths, layout transformations, overflow, touch and mobile browser rules
+  - [styling.md](ui/styling.md) — Tailwind usage, no styles in HTML, component classes in CSS files, email exception
+  - [media-optimization.md](ui/media-optimization.md) — Image, video, font and icon optimization
+  - [layout-buttons.md](ui/layout-buttons.md) — Layout and buttons
+  - [theme.md](ui/theme.md) — Color and theme
+  - [animation.md](ui/animation.md) — Not locking the screen with Canvas / WebGL / animation, pausing, adaptive quality, testing method
+  - [design-preferences.md](ui/design-preferences.md) — Design preferences
+  - [accessibility.md](ui/accessibility.md) — Keyboard, contrast, screen reader, focus, WCAG 2.2 AA
+  - [seo.md](ui/seo.md) — Meta / Open Graph, canonical, sitemap, structured data, noindex in panels
+- database/
+  - [schema.md](database/schema.md) — Table / column naming, keys, indexes, timestamps, constraints, query safety
+  - [migrations.md](database/migrations.md) — Ordered, reversible, zero-downtime migrations; data-losing changes
+  - [backup.md](database/backup.md) — Automatic, encrypted, off-server backups; restore testing, RPO / RTO
+- files/
+  - [uploads.md](files/uploads.md) — Type / size validation, virus scanning, signed URLs, per-company separation, EXIF
+- data/
+  - [import-export.md](data/import-export.md) — CSV / Excel / XML / JSON feeds; preview, row-level error report, queue, formula injection
+- stack/
+  - [framework-rules.md](stack/framework-rules.md) — Following the security, development and performance rules of whichever framework is used; detection and version
+  - [selection.md](stack/selection.md) — Framework selection: questions to ask, criteria, decision record
+  - [web/nextjs.md](stack/web/nextjs.md) — Next.js (App Router)
+  - [web/laravel.md](stack/web/laravel.md) — Laravel
+  - [web/aspnet-core.md](stack/web/aspnet-core.md) — ASP.NET Core
+  - [web/node.md](stack/web/node.md) — Node.js server (NestJS / Express / Fastify)
+  - [web/django.md](stack/web/django.md) — Django
+  - [languages/typescript.md](stack/languages/typescript.md) — TypeScript / JavaScript
+  - [languages/php.md](stack/languages/php.md) — PHP
+  - [languages/csharp.md](stack/languages/csharp.md) — C#
+  - [languages/python.md](stack/languages/python.md) — Python
+  - [mobile/general.md](stack/mobile/general.md) — Mobile general: version compatibility, secure storage, certificates and signing, preventing freezes / crashes, store rules
+  - [mobile/react-native-expo.md](stack/mobile/react-native-expo.md) — React Native / Expo
+  - [mobile/flutter.md](stack/mobile/flutter.md) — Flutter
+  - [mobile/ios-native.md](stack/mobile/ios-native.md) — iOS native (Swift / SwiftUI)
+  - [mobile/android-native.md](stack/mobile/android-native.md) — Android native (Kotlin / Compose)
