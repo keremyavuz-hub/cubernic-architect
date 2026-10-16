@@ -17,3 +17,9 @@ Olması gereken ve sürdürülebilir mimari için klavuz niteliği taşımaktad�
 - Veri değiştiren işlemler açıkça tetiklenmeli, silme gibi geri dönüşü olmayan işlemler ek onay istemelidir.
 - Silme onayı sunucu tarafında da ayrı bir onay alanıyla kontrol edilmelidir.
 - Gizli bal küpü (honeypot) alanı eklenmelidir. (Önerilen)
+- Tüm parola alanlarında (giriş, kayıt, parola sıfırlama, parola değiştirme, davet, hesap işlemi onayı) parolayı göster/gizle düğmesi bulunmalıdır.
+- Göster/gizle düğmesi alanın içinde sağda göz ikonu olarak konumlanmalı, metin düğmenin altına girmemelidir.
+- Göster/gizle düğmesi tek bir ortak bileşen olarak yazılmalı, her formda ayrı ayrı kodlanmamalıdır.
+- Göster/gizle düğmesi formu göndermemeli (type="button"), ekran okuyucu için "Parolayı göster / gizle" etiketi taşımalıdır.
+- Göster/gizle düğmesi sekme (Tab) sırasında alanlar arası geçişi bölmemelidir. (Önerilen)
+- Parola gösterilirken alanın name ve autocomplete değerleri değişmemeli, tarayıcı parola yöneticisi alanı tanımaya devam etmelidir.

@@ -17,3 +17,9 @@ This is a guide for a proper and sustainable architecture. What is written here 
 - Data-changing actions must be explicitly triggered, and irreversible actions such as deletion must require additional confirmation.
 - Deletion confirmation must also be checked on the server side with a separate confirmation field.
 - A hidden honeypot field should be added. (Recommended)
+- Every password field (login, registration, password reset, password change, invitation, account action confirmation) must have a show/hide password button.
+- The show/hide button must sit inside the field on the right as an eye icon, and text must not run under the button.
+- The show/hide button must be written as a single shared component, not coded separately in each form.
+- The show/hide button must not submit the form (type="button") and must carry a "Show / hide password" label for screen readers.
+- The show/hide button should not interrupt Tab navigation between fields. (Recommended)
+- While the password is shown, the field's name and autocomplete values must not change, so the browser password manager keeps recognising the field.
