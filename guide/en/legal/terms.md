@@ -22,6 +22,7 @@ This is a guide for a proper and sustainable architecture. What is written here 
 - The agreement must have clause numbers and headings and be presented in readable typography.
 - Reading progress should be shown in the agreement, and the accept button should not be enabled until it is read to the end. (Recommended)
 - The agreement acceptance checkbox must be unchecked by default.
+- The checkbox must not be ticked directly; clicking the box or its text must open the agreement, and the box must be ticked only after the agreement is read to the end and "Accept" is pressed. Unticking must remain possible.
 - The terms of use and the KVKK information notice must be separate documents and must not be combined in a single checkbox.
 - The agreement must include clauses on the identity of the parties (company title, address, contact), scope of the service, user obligations, prohibited uses, account suspension and closure, limitation of liability, competent court in disputes and changes to the agreement.
 - Account closure and data deletion conditions must be clearly written in the agreement.

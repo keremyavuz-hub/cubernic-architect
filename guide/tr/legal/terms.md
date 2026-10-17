@@ -22,6 +22,7 @@ Olması gereken ve sürdürülebilir mimari için klavuz niteliği taşımaktad�
 - Sözleşmede madde numaraları ve başlıklar bulunmalı, okunabilir bir tipografiyle sunulmalıdır.
 - Sözleşmede okuma ilerlemesi gösterilmeli, sonuna kadar okunmadan kabul butonu aktif edilmemelidir. (Önerilen)
 - Sözleşmeyi kabul onay kutusu varsayılan olarak işaretsiz gelmelidir.
+- Onay kutusu doğrudan işaretlenememeli; kutuya veya metnine tıklamak sözleşmeyi açmalı, kutu yalnız sözleşme sonuna kadar okunup "Kabul" edilince işaretlenmelidir. İşaret kaldırılabilir olmalıdır.
 - Kullanım sözleşmesi ile KVKK aydınlatma metni ayrı belgeler olmalı, tek kutuda birleştirilmemelidir.
 - Sözleşmede tarafların kimliği (şirket unvanı, adres, iletişim), hizmetin kapsamı, kullanıcının yükümlülükleri, yasaklı kullanımlar, hesabın askıya alınması ve kapatılması, sorumluluğun sınırlandırılması, uyuşmazlıkta yetkili mahkeme ve sözleşmenin değiştirilmesi maddeleri bulunmalıdır.
 - Hesap kapatma ve veri silme koşulları sözleşmede açıkça yazmalıdır.
