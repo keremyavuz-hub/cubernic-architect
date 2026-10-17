@@ -1,5 +1,9 @@
 # Değişiklik Günlüğü
 
+## 0.2.1 — 2026-10-17
+- forms/forms.md: parola alanlarında göster/gizle düğmesi kuralları.
+- legal/terms.md: onay kutusu sözleşme okunup "Kabul" edilmeden işaretlenemez.
+
 ## 0.2.0 — 2026-10-17
 - stack/: framework kuralları ve seçimi; Next.js, Laravel, ASP.NET Core, Node, Django; TypeScript, PHP, C#, Python; mobil (genel, React Native / Expo, Flutter, iOS, Android).
 - operations/queues.md: kuyruk sistemleri.
