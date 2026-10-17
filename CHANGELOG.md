@@ -1,5 +1,10 @@
 # Değişiklik Günlüğü
 
+## 0.2.2 — 2026-10-17
+- hooks/guide-match.mjs: düzenlenen dosya yol ve içerik desenleriyle kılavuz dosyalarına eşlenir; eşleşen dosyaların metni bağlama otomatik eklenir (PreToolUse).
+- skills/audit: /cubernic-architect:audit ile proje genelinde, her maddeyi tek tek kontrol eden uyum denetimi.
+- ai/guide-activation.md: "Dokunulan Yapının Kontrolü" bölümü; denetim için "Ölçü" istisnası.
+
 ## 0.2.1 — 2026-10-17
 - forms/forms.md: parola alanlarında göster/gizle düğmesi kuralları.
 - legal/terms.md: onay kutusu sözleşme okunup "Kabul" edilmeden işaretlenemez.

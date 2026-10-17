@@ -37,6 +37,12 @@ This is a guide for a proper and sustainable architecture. What is written here 
 - Security vulnerabilities (e.g., storing passwords in plain text, missing CSRF protection) must be reported to the developer in all cases; other gaps must be mentioned only while working on the related structure.
 - A deliberate developer decision that conflicts with the guide must be written into the rules file as a "deviation from the guide" with its justification and must not be asked again.
 
+## Checking the Touched Structure
+- When changing a file (new or existing project), the AI must determine which structure the file belongs to and apply the items of the related guide files both to the code it writes and to the existing structure in the file.
+- The plugin supports this with a hook: the edited file is mapped to guide files by path and content patterns, and the text of the matching files is added to context automatically. The AI must not ignore this text.
+- Items the existing code does not meet (e.g., a table without sorting or pagination) must be reported as a short list at the end of the task; fixes are made with the developer's approval.
+- Since some files may not match the patterns, a project-wide check is done with the /cubernic-architect:audit command; in an audit every item of every triggered guide file must be checked one by one.
+
 ## Catching Mismatches
 - The AI must always catch and briefly report situations that do not fit the project, contradict the project's own decisions or the guide, and that the developer has not noticed.
 - Examples: adding an open registration form to an invite-only system; writing a query without data isolation in a company based panel; collecting personal data without a privacy notice / consent; using a library or service with an individual license in a commercial project; code that contradicts the port, data source or architecture decision in the rules file; building a second structure that does the same job.
@@ -47,3 +53,4 @@ This is a guide for a proper and sustainable architecture. What is written here 
 ## Proportion
 - The AI must read only the guide files related to the current task and must not scan the entire guide for every task.
 - Suggestions must be short; long compliance reports that slow down the developer's work must not be prepared.
+- Exception: if the developer asks for a project review / audit (/cubernic-architect:audit), the full report is the task itself.

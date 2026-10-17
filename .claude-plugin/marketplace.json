@@ -6,7 +6,7 @@
       "name": "cubernic-architect",
       "source": "./",
       "description": "Project-independent architecture guide for AI-assisted development (TR / EN)",
-      "version": "0.2.1"
+      "version": "0.2.2"
     }
   ]
 }

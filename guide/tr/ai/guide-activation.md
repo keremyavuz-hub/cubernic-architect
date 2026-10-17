@@ -37,6 +37,12 @@ Olması gereken ve sürdürülebilir mimari için klavuz niteliği taşımaktad�
 - Güvenlik açığı (ör. parolanın düz metin saklanması, CSRF koruması olmaması) her durumda geliştiriciye bildirilmelidir; diğer eksikler yalnız ilgili yapı üzerinde çalışılırken söylenmelidir.
 - Kılavuzla çelişen bilinçli bir geliştirici kararı kural dosyasına "kılavuzdan sapma" olarak gerekçesiyle yazılmalı ve bir daha sorulmamalıdır.
 
+## Dokunulan Yapının Kontrolü
+- Bir dosyada değişiklik yapılırken (yeni ya da mevcut proje) yapay zeka o dosyanın hangi yapıya ait olduğunu belirlemeli ve ilgili kılavuz dosyalarının maddelerini hem yazdığı koda hem dosyadaki mevcut yapıya uygulamalıdır.
+- Eklenti bunu hook ile destekler: düzenlenen dosya yol ve içerik desenleriyle kılavuz dosyalarına eşlenir, eşleşen dosyaların metni bağlama otomatik eklenir. Yapay zeka bu metni yok saymamalıdır.
+- Mevcut kodda karşılanmayan maddeler (ör. tabloda sıralama veya sayfalama yok) işin sonunda kısa liste halinde bildirilmeli; düzeltme geliştiricinin onayıyla yapılmalıdır.
+- Eşleme desenlerine uymayan dosyalar olabileceği için proje genelinde kontrol /cubernic-architect:audit komutuyla yapılır; denetimde her tetiklenen kılavuz dosyasının her maddesi tek tek kontrol edilmelidir.
+
 ## Uyumsuzlukları Yakalama
 - Yapay zeka projeye uymayan, projenin kendi kararlarıyla veya kılavuzla ters düşen ve geliştiricinin fark etmediği durumları mutlaka yakalamalı ve kısaca bildirmelidir.
 - Örnekler: yalnız davetli bir sisteme açık kayıt formu eklenmesi; firma bazlı panelde veri izolasyonu olmadan sorgu yazılması; kişisel veri toplanırken aydınlatma / onay olmaması; ticari projede bireysel lisanslı bir kütüphane veya servis kullanılması; kural dosyasındaki port, veri kaynağı veya mimari kararla çelişen kod; aynı işi yapan ikinci bir yapı kurulması.
@@ -47,3 +53,4 @@ Olması gereken ve sürdürülebilir mimari için klavuz niteliği taşımaktad�
 ## Ölçü
 - Yapay zeka yalnız o anki işle ilgili kılavuz dosyalarını okumalı, tüm kılavuzu her işte taramamalıdır.
 - Öneriler kısa olmalı; geliştiricinin işini yavaşlatacak uzun uyum raporları hazırlanmamalıdır.
+- İstisna: geliştirici proje incelemesi / denetimi isterse (/cubernic-architect:audit) tam rapor işin kendisidir.
